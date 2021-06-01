@@ -29,9 +29,7 @@ function getEmployeeByName(name) {
 
 const createEmployee = (personalInfo, associatedWith) => ({ ...personalInfo, ...associatedWith });
 
-// function isManager(id) {
-//   // seu código aqui
-// }
+const isManager = (idFind) => employees.find(({ id }) => id === idFind).managers.length === 1;
 
 // function addEmployee(id, firstName, lastName, managers, responsibleFor) {
 //   // seu código aqui
@@ -74,7 +72,7 @@ module.exports = {
   getEmployeeByName,
   // getEmployeeCoverage,
   // addEmployee,
-  // isManager,
+  isManager,
   getAnimalsOlderThan,
   // getOldestFromFirstSpecies,
   // increasePrices,
