@@ -21,15 +21,13 @@ function getAnimalsOlderThan(animal, age) {
   return residents.every((resident) => resident.age >= age);
 }
 
-const check = (first, last, employee) => first === employee || last === employee;
+const check = (first, last, name) => first === name || last === name;
 
-function getEmployeeByName(Name) {
-  return employees.find(({ firstName, lastName }) => check(firstName, lastName, Name)) || {};
+function getEmployeeByName(name) {
+  return employees.find(({ firstName, lastName }) => check(firstName, lastName, name)) || {};
 }
 
-// function createEmployee(personalInfo, associatedWith) {
-//   // seu código aqui
-// }
+const createEmployee = (personalInfo, associatedWith) => ({ ...personalInfo, ...associatedWith });
 
 // function isManager(id) {
 //   // seu código aqui
@@ -80,5 +78,5 @@ module.exports = {
   getAnimalsOlderThan,
   // getOldestFromFirstSpecies,
   // increasePrices,
-  // createEmployee,
+  createEmployee,
 };
