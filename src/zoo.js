@@ -31,9 +31,10 @@ const createEmployee = (personalInfo, associatedWith) => ({ ...personalInfo, ...
 
 const isManager = (idFind) => employees.find(({ id }) => id === idFind).managers.length === 1;
 
-// function addEmployee(id, firstName, lastName, managers, responsibleFor) {
-//   // seu código aqui
-// }
+function addEmployee(id, firstName, lastName, managers = [], responsibleFor = []) {
+  const employee = { id, firstName, lastName, managers, responsibleFor };
+  employees.push(employee);
+}
 
 // function countAnimals(species) {
 //   // seu código aqui
@@ -71,7 +72,7 @@ module.exports = {
   getSpeciesByIds,
   getEmployeeByName,
   // getEmployeeCoverage,
-  // addEmployee,
+  addEmployee,
   isManager,
   getAnimalsOlderThan,
   // getOldestFromFirstSpecies,
