@@ -73,7 +73,7 @@ Você só deve alterar os arquivos indicados nos requisitos. **Os arquivos que n
 
 ### DATA DE ENTREGA
 
-  - O projeto tem até a seguinte data: `dd/mm/yyyy - 14:00h` para ter entregue a avaliação final.
+  - O projeto tem até a seguinte data: `09/06/2021 - 14:00h` para ter entregue a avaliação final.
 
 ---
 
