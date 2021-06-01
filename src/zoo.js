@@ -14,9 +14,10 @@ const { species } = data;
 
 const getSpeciesByIds = (...ids) => species.filter((specie) => ids.includes(specie.id));
 
-// function getAnimalsOlderThan(animal, age) {
-//   // seu código aqui
-// }
+function getAnimalsOlderThan(animal, age) {
+  const { residents } = species.filter((specie) => specie.name === animal)[0];
+  return residents.every((resident) => resident.age >= age);
+}
 
 // function getEmployeeByName(employeeName) {
 //   // seu código aqui
@@ -72,7 +73,7 @@ module.exports = {
   // getEmployeeCoverage,
   // addEmployee,
   // isManager,
-  // getAnimalsOlderThan,
+  getAnimalsOlderThan,
   // getOldestFromFirstSpecies,
   // increasePrices,
   // createEmployee,
