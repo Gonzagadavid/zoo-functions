@@ -14,6 +14,10 @@ const { species } = data;
 
 const { employees } = data;
 
+const { prices } = data;
+
+const { Adult: adultPrice, Senior: seniorPrice, Child: childPrice } = prices;
+
 const getSpeciesByIds = (...ids) => species.filter((specie) => ids.includes(specie.id));
 
 function getAnimalsOlderThan(animal, age) {
@@ -45,9 +49,10 @@ function countAnimals(specie) {
   return animals[specie] || animals;
 }
 
-// function calculateEntry(entrants) {
-//   // seu código aqui
-// }
+function calculateEntry(entries = { Adult: 0, Senior: 0, Child: 0 }) {
+  const { Adult = 0, Senior = 0, Child = 0 } = entries;
+  return Adult * adultPrice + Senior * seniorPrice + Child * childPrice;
+}
 
 // function getAnimalMap(options) {
 //   // seu código aqui
@@ -70,7 +75,7 @@ function countAnimals(specie) {
 // }
 
 module.exports = {
-  // calculateEntry,
+  calculateEntry,
   // getSchedule,
   countAnimals,
   // getAnimalMap,
