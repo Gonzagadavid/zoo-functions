@@ -253,23 +253,14 @@ module.exports = {
       firstName: 'Burl',
       lastName: 'Bethea',
       managers: [stephanieId],
-      responsibleFor: [
-        lionId,
-        tigersId,
-        bearsId,
-        'ef3778eb-2844-4c7c-b66c-f432073e1c6b'],
+      responsibleFor: [lionId, tigersId, bearsId, 'ef3778eb-2844-4c7c-b66c-f432073e1c6b'],
     },
     {
       id: olaId,
       firstName: 'Ola',
       lastName: 'Orloff',
       managers: [stephanieId],
-      responsibleFor: [
-        ottersId,
-        frogsId,
-        snakesId,
-        elephantsId,
-      ],
+      responsibleFor: [ottersId, frogsId, snakesId, elephantsId],
     },
     {
       id: '56d43ba3-a5a7-40f6-8dd7-cbb05082383f',
@@ -283,10 +274,7 @@ module.exports = {
       firstName: 'Stephanie',
       lastName: 'Strauss',
       managers: [],
-      responsibleFor: [
-        '01422318-ca2d-46b8-b66c-3e9e188244ed',
-        ottersId,
-      ],
+      responsibleFor: ['01422318-ca2d-46b8-b66c-3e9e188244ed', ottersId],
     },
     {
       id: '4b40a139-d4dc-4f09-822d-ec25e819a5ad',
@@ -300,21 +288,14 @@ module.exports = {
       firstName: 'Ardith',
       lastName: 'Azevado',
       managers: ['b0dc644a-5335-489b-8a2c-4e086c7819a2'],
-      responsibleFor: [
-        tigersId,
-        bearsId,
-      ],
+      responsibleFor: [tigersId, bearsId],
     },
     {
       id: 'b0dc644a-5335-489b-8a2c-4e086c7819a2',
       firstName: 'Emery',
       lastName: 'Elser',
       managers: [stephanieId],
-      responsibleFor: [
-        elephantsId,
-        bearsId,
-        lionId,
-      ],
+      responsibleFor: [elephantsId, bearsId, lionId],
     },
   ],
   hours: {
