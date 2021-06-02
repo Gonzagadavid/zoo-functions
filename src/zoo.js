@@ -14,6 +14,8 @@ const { species } = data;
 
 const { employees } = data;
 
+const { hours } = data;
+
 const { prices } = data;
 
 const { Adult: adultPrice, Senior: seniorPrice, Child: childPrice } = prices;
@@ -95,9 +97,20 @@ function getAnimalMap(options) {
   return namesLocation;
 }
 
-// function getSchedule(dayName) {
-//   // seu código aqui
-// }
+function getSchedule(dayName) {
+  const informations = {};
+  const days = Object.keys(hours);
+  const response = {};
+
+  days.forEach((day) => {
+    const { open, close } = hours[day];
+    const information = open === 0 ? 'CLOSED' : `Open from ${open}am until ${close - 12}pm`;
+    informations[day] = information;
+  });
+
+  response[dayName] = informations[dayName];
+  return dayName ? response : informations;
+}
 
 // function getOldestFromFirstSpecies(id) {
 //   // seu código aqui
@@ -113,7 +126,7 @@ function getAnimalMap(options) {
 
 module.exports = {
   calculateEntry,
-  // getSchedule,
+  getSchedule,
   countAnimals,
   getAnimalMap,
   getSpeciesByIds,
