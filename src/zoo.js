@@ -10,21 +10,15 @@ eslint no-unused-vars: [
 */
 const data = require('./data');
 
-const { species } = data;
-
-const { employees } = data;
-
-const { hours } = data;
-
-const { prices } = data;
+const { species, employees, hours, prices } = data;
 
 const { Adult: adultPrice, Senior: seniorPrice, Child: childPrice } = prices;
 
 const getSpeciesByIds = (...ids) => species.filter((specie) => ids.includes(specie.id));
 
-function getAnimalsOlderThan(animal, age) {
-  const { residents } = species.filter((specie) => specie.name === animal)[0];
-  return residents.every((resident) => resident.age >= age);
+function getAnimalsOlderThan(animal, limitAge) {
+  const { residents } = species.find(({ name }) => name === animal);
+  return residents.every(({ age }) => age >= limitAge);
 }
 
 const check = (first, last, name) => first === name || last === name;
@@ -43,11 +37,8 @@ function addEmployee(id, firstName, lastName, managers = [], responsibleFor = []
 }
 
 function countAnimals(specie) {
-  const animals = species.reduce((object, animal) => {
-    const objectQty = object;
-    objectQty[animal.name] = animal.residents.length;
-    return objectQty;
-  }, {});
+  const animals = species.reduce((acc, { name, residents }) =>
+    ({ ...acc, [name]: residents.length }), {});
   return animals[specie] || animals;
 }
 
@@ -59,9 +50,8 @@ function calculateEntry(entries = { Adult: 0, Senior: 0, Child: 0 }) {
 function generateAnimalsLocation(arrayCoord) {
   return arrayCoord.reduce((object, coord) => {
     const objectCoord = object;
-    const arraySpecies = species
-      .filter(({ location }) => location === coord)
-      .map((specie) => specie.name);
+    const arraySpecies = species.filter(({ location }) =>
+      location === coord).map((specie) => specie.name);
     objectCoord[coord] = arraySpecies;
     return objectCoord;
   }, {});
@@ -84,12 +74,12 @@ function generateSpeciesName(arrayAnimal, options) {
   }, []);
 }
 
-function getAnimalMap(options) {
+function getAnimalMap(options = {}) {
   const coords = ['NE', 'NW', 'SE', 'SW'];
   const animalsLocation = generateAnimalsLocation(coords);
   const namesLocation = {};
 
-  if (!options || !options.includeNames) return animalsLocation;
+  if (!options.includeNames) return animalsLocation;
 
   coords.forEach((key) => {
     namesLocation[key] = generateSpeciesName(animalsLocation[key], options);
@@ -144,7 +134,7 @@ function getEmployeeCoverage(idOrName, list = {}) {
 
   const { firstName, lastName, responsibleFor } = employees.find((employee) => {
     const { firstName: name, lastName: outName, id } = employee;
-    return (name === idOrName || outName === idOrName || id === idOrName);
+    return name === idOrName || outName === idOrName || id === idOrName;
   });
   const copy = list;
   const fullName = `${firstName} ${lastName}`;
