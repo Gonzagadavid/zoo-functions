@@ -10,7 +10,6 @@ describe('Implemente a função getSpeciesByIds', () => {
 
   it('Ao receber como parâmetro um único id, retorna um array com a espécie referente à esse id', () => {
     const actual = zoo.getSpeciesByIds('0938aa23-f153-4937-9f88-4858b24d6bce');
-    console.log(actual);
     const expected = [
       {
         id: '0938aa23-f153-4937-9f88-4858b24d6bce',
